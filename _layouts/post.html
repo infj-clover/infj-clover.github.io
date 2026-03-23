@@ -1,0 +1,43 @@
+---
+layout: default
+---
+
+<div class="ph">
+  <div class="ph-path">
+    <span class="ph-path-accent">~/void/posts</span> $
+  </div>
+  <div class="ph-title">{{ page.title }}</div>
+  <div class="ph-sub">
+    {{ page.date | date: "%Y.%m.%d" }}
+    {% if page.read_time %}&nbsp;·&nbsp; {{ page.read_time }} min read{% endif %}
+    {% if page.categories %}
+      &nbsp;·&nbsp;
+      {% for cat in page.categories %}
+        <span class="pc-tag">{{ cat }}</span>
+      {% endfor %}
+    {% endif %}
+  </div>
+</div>
+
+<article class="post-body">
+  {{ content }}
+</article>
+
+<!-- 이전/다음 글 네비게이션 -->
+<div class="pager">
+  <div>
+    {% if page.previous.url %}
+      <a class="pg-btn" href="{{ page.previous.url | relative_url }}">← {{ page.previous.title | truncate: 28 }}</a>
+    {% else %}
+      <button class="pg-btn" disabled style="opacity:.3">← PREV</button>
+    {% endif %}
+  </div>
+  <a class="pg-info" href="{{ '/posts/' | relative_url }}">ALL POSTS</a>
+  <div>
+    {% if page.next.url %}
+      <a class="pg-btn" href="{{ page.next.url | relative_url }}">{{ page.next.title | truncate: 28 }} →</a>
+    {% else %}
+      <button class="pg-btn" disabled style="opacity:.3">NEXT →</button>
+    {% endif %}
+  </div>
+</div>

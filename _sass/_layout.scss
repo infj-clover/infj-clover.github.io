@@ -1,0 +1,21 @@
+// ── LAYOUT ─────────────────────────────────────────
+.layout {
+  position: relative; z-index: 1;
+  display: grid;
+  grid-template-columns: var(--sidebar-w) 1fr;
+  grid-template-rows: var(--header-h) 1fr;
+  grid-template-areas: "hd hd" "sb main";
+  min-height: 100vh;
+}
+
+main {
+  grid-area: main;
+  padding: 36px 44px 60px;
+  max-width: 800px;
+}
+
+// 테마 전환 시 패널들 부드럽게
+header, aside, .post-card, .featured,
+.code-block, .proj-card, .about-surface {
+  transition: background .4s, border-color .4s, color .4s;
+}

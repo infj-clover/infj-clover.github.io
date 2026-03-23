@@ -1,0 +1,91 @@
+// ── BACKGROUND LAYERS ──────────────────────────────
+
+// 라이트 모드에서 다크 배경 숨김
+[data-theme="light"] #space-bg,
+[data-theme="light"] #nebula,
+[data-theme="light"] #meteors { opacity: 0 !important; }
+
+// 딥 스페이스 그라디언트
+#space-bg {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  transition: opacity .4s;
+  background:
+    radial-gradient(ellipse 70% 55% at 18% 28%, rgba(8,6,30,.9)  0%, transparent 60%),
+    radial-gradient(ellipse 55% 45% at 82% 72%, rgba(0,12,28,.85) 0%, transparent 55%),
+    radial-gradient(ellipse 100% 100% at 50% 50%, #10121e 0%, #111428 55%, #130c24 100%);
+}
+
+// 성운 CSS 레이어 (파티클은 JS로)
+#nebula {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  transition: opacity .4s;
+  background:
+    radial-gradient(ellipse 50% 30% at 12% 22%, rgba(0,80,140,.06)  0%, transparent 70%),
+    radial-gradient(ellipse 35% 45% at 88% 12%, rgba(50,0,100,.05)  0%, transparent 65%),
+    radial-gradient(ellipse 60% 25% at 65% 82%, rgba(0,120,160,.05) 0%, transparent 70%);
+  animation: nebula-breathe 50s ease-in-out infinite alternate;
+}
+@keyframes nebula-breathe {
+  0%   { transform: scale(1)    translate(0, 0); }
+  50%  { transform: scale(1.02) translate(6px, -10px); }
+  100% { transform: scale(.99)  translate(-5px, 7px); }
+}
+
+// 성운 파티클 캔버스
+#meteors {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  transition: opacity .4s;
+}
+
+// 라이트 모드 배경 — 도트 그리드 + 코너 컬러 워시
+#light-bg {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  opacity: 0;
+  transition: opacity .4s;
+  background-image: radial-gradient(circle, rgba(0,122,130,.18) 1px, transparent 1px);
+  background-size: 28px 28px;
+
+  &::before {
+    content: ''; position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 55% 40% at 5%  5%,  rgba(0,160,180,.07) 0%, transparent 65%),
+      radial-gradient(ellipse 40% 50% at 96% 8%,  rgba(60,0,160,.05)  0%, transparent 60%),
+      radial-gradient(ellipse 50% 35% at 92% 92%, rgba(0,140,180,.06) 0%, transparent 65%),
+      radial-gradient(ellipse 35% 40% at 4%  94%, rgba(40,0,120,.04)  0%, transparent 60%);
+  }
+}
+[data-theme="light"] #light-bg { opacity: 1; }
+
+// 스캔라인
+#scanlines {
+  position: fixed; inset: 0; z-index: 9998; pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg, transparent, transparent 3px,
+    rgba(0,0,0,.018) 3px, rgba(0,0,0,.018) 4px
+  );
+}
+
+// 부팅 플래시
+#boot-flash {
+  position: fixed; inset: 0; z-index: 99999; pointer-events: none;
+
+  &::before {
+    content: ''; position: absolute; left: 0; right: 0; top: -8px; height: 8px;
+    background: linear-gradient(transparent, rgba(0,194,204,.35), transparent);
+    animation: scan-sweep 1.6s cubic-bezier(.4,0,.6,1) forwards;
+  }
+  &::after {
+    content: ''; position: absolute; inset: 0;
+    background: rgba(0,194,204,.045);
+    animation: flash-fade 1.6s ease forwards;
+  }
+}
+@keyframes scan-sweep {
+  0%   { top: -8px;    opacity: 1; }
+  85%  { top: 100vh;   opacity: 1; }
+  100% { top: 100vh;   opacity: 0; }
+}
+@keyframes flash-fade {
+  0%, 15% { opacity: 1; }
+  100%    { opacity: 0; }
+}

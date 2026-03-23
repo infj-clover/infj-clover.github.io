@@ -1,0 +1,37 @@
+// ── DESIGN TOKENS ─────────────────────────────────
+// 다크 모드 (기본)
+:root {
+  --c-bg:        #10121e;
+  --c-surface:   #161828;
+  --c-raised:    #1c1f32;
+  --c-border:    #252740;
+  --c-border-hi: #303350;
+  --c-text:      #cdd0e3;
+  --c-muted:     #565878;
+  --c-dim:       #363850;
+  --c-accent:    #00c2cc;
+  --c-accent-dk: #007f88;
+  --c-accent-bg: rgba(0, 194, 204, 0.06);
+
+  --f-mono: 'IBM Plex Mono', monospace;
+  --f-sans: 'IBM Plex Sans', sans-serif;
+
+  --sidebar-w: 224px;
+  --header-h:  52px;
+  --radius: 3px;
+}
+
+// 라이트 모드
+[data-theme="light"] {
+  --c-bg:        #eef0f6;
+  --c-surface:   #f8f9fc;
+  --c-raised:    #eef0f8;
+  --c-border:    #d4d6e8;
+  --c-border-hi: #b8bacf;
+  --c-text:      #1a1c2e;
+  --c-muted:     #60638a;
+  --c-dim:       #a0a3be;
+  --c-accent:    #007a82;
+  --c-accent-dk: #005860;
+  --c-accent-bg: rgba(0, 122, 130, 0.07);
+}

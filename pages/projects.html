@@ -1,0 +1,32 @@
+---
+layout: default
+title: Projects
+permalink: /projects/
+---
+
+<div class="ph">
+  <div class="ph-path"><span class="ph-path-accent">~/void/projects</span> $</div>
+  <div class="ph-title">PROJECTS</div>
+  <div class="ph-sub">내가 만든 것들 — {{ site.data.projects | size }} REPOS</div>
+</div>
+
+<div class="proj-grid">
+  {% for proj in site.data.projects %}
+  <a class="proj-card" href="{{ proj.url }}" target="_blank" rel="noopener">
+    <div class="proj-top">
+      <span class="proj-name">{{ proj.name }}</span>
+      <span class="proj-status s-{{ proj.status }}">{{ proj.status | upcase }}</span>
+    </div>
+    <div class="proj-desc">{{ proj.desc }}</div>
+    <div class="proj-stack">
+      {% for tag in proj.tags %}
+      <span class="proj-tag">#{{ tag }}</span>
+      {% endfor %}
+    </div>
+    <div class="proj-footer">
+      <span class="proj-meta">★ {{ proj.stars }} · {{ proj.date }}</span>
+      <span class="proj-link">GitHub →</span>
+    </div>
+  </a>
+  {% endfor %}
+</div>

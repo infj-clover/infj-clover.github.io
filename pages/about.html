@@ -1,0 +1,51 @@
+---
+layout: default
+title: About
+permalink: /about/
+---
+
+<div class="ph">
+  <div class="ph-path"><span class="ph-path-accent">~/void/about</span> $</div>
+  <div class="ph-title">ABOUT</div>
+</div>
+
+<div class="about-hero">
+  <div class="about-avatar">∅</div>
+  <div class="about-name">{{ site.author.name }}</div>
+  <div class="about-role">{{ site.author.role }}</div>
+  <div class="about-bio">{{ site.author.bio }}</div>
+</div>
+
+<div class="about-surface">
+  <div class="about-section-title">TECH STACK</div>
+  <div class="skill-grid">
+    {% for skill in site.data.skills %}
+    <div class="skill-item">
+      <div class="skill-cat">{{ skill.category }}</div>
+      <div class="skill-list">{{ skill.items | join: " · " }}</div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="about-surface">
+  <div class="about-section-title">CONTACT</div>
+  <div class="contact-list">
+    <div class="contact-item">
+      <span class="contact-key">EMAIL</span>
+      <a class="contact-val" href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>
+    </div>
+    <div class="contact-item">
+      <span class="contact-key">GITHUB</span>
+      <a class="contact-val" href="https://{{ site.author.github }}" target="_blank">{{ site.author.github }}</a>
+    </div>
+    <div class="contact-item">
+      <span class="contact-key">TWITTER</span>
+      <span class="contact-val">{{ site.author.twitter }}</span>
+    </div>
+    <div class="contact-item">
+      <span class="contact-key">LOCATION</span>
+      <span class="contact-val">{{ site.author.location }}</span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+# _data/skills.yml
+- category: LANGUAGES
+  items: [Rust, Go, C, Python, TypeScript]
+
+- category: SYSTEMS
+  items: [Linux kernel, eBPF, WASM, POSIX]
+
+- category: INFRA
+  items: [Kubernetes, Docker, Terraform, Grafana]
+
+- category: STORAGE
+  items: [PostgreSQL, Redis, RocksDB, S3]
+
+- category: AI / ML
+  items: [llama.cpp, GGUF, HuggingFace, CUDA]
+
+- category: SECURITY
+  items: [Threat modeling, Binary analysis]

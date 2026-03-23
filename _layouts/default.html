@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if page.title %}{{ page.title }} — {% endif %}{{ site.title }}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,300&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+  {% seo %}
+</head>
+<body>
+
+  <!-- 배경 레이어들 -->
+  <div id="space-bg"></div>
+  <div id="nebula"></div>
+  <div id="light-bg"></div>
+  <canvas id="meteors"></canvas>
+  <div id="scanlines"></div>
+  <div id="boot-flash"></div>
+
+  <div class="layout">
+    {% include header.html %}
+    {% include sidebar.html %}
+
+    <main>
+      {{ content }}
+    </main>
+  </div>
+
+  <script src="{{ '/assets/js/theme.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/nebula.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/clock.js' | relative_url }}"></script>
+</body>
+</html>

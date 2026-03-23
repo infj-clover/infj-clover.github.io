@@ -1,0 +1,38 @@
+---
+layout: default
+title: Archive
+permalink: /archive/
+---
+
+<div class="ph">
+  <div class="ph-path"><span class="ph-path-accent">~/void/archive</span> $</div>
+  <div class="ph-title">ARCHIVE</div>
+  <div class="ph-sub">전체 포스트 — {{ site.posts | size }} ENTRIES</div>
+</div>
+
+{% assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+
+{% for year_group in posts_by_year %}
+<div class="archive-year">
+  <div class="archive-year-label">{{ year_group.name }}</div>
+
+  {% assign posts_by_month = year_group.items | group_by_exp: "post", "post.date | date: '%B'" %}
+  {% for month_group in posts_by_month %}
+  <div class="archive-month">
+    <div class="archive-month-label">{{ month_group.name | upcase }}</div>
+
+    {% for post in month_group.items %}
+    <a class="archive-entry" href="{{ post.url | relative_url }}">
+      <span class="ae-date">{{ post.date | date: "%m.%d" }}</span>
+      <span class="ae-title">{{ post.title }}</span>
+      <div class="ae-tags">
+        {% for tag in post.tags limit: 2 %}
+        <span class="ae-tag">#{{ tag }}</span>
+        {% endfor %}
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+  {% endfor %}
+</div>
+{% endfor %}

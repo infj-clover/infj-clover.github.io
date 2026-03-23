@@ -1,0 +1,85 @@
+// ── SIDEBAR ────────────────────────────────────────
+aside {
+  grid-area: sb;
+  background: var(--c-surface);
+  border-right: 1px solid var(--c-border-hi);
+  padding: 24px 0 20px;
+  position: sticky; top: var(--header-h);
+  height: calc(100vh - var(--header-h));
+  overflow-y: auto;
+  display: flex; flex-direction: column;
+
+  &::-webkit-scrollbar { width: 3px; }
+  &::-webkit-scrollbar-thumb { background: var(--c-dim); }
+}
+
+.sb-section { padding: 0 16px; margin-bottom: 28px; }
+
+.sb-label {
+  font-family: var(--f-mono); font-size: 9px;
+  letter-spacing: .16em; color: var(--c-dim);
+  padding-bottom: 8px; margin-bottom: 4px;
+  border-bottom: 1px solid var(--c-border);
+}
+
+.nav-link {
+  display: flex; align-items: center; gap: 9px;
+  padding: 7px 8px; border-radius: var(--radius);
+  font-family: var(--f-mono); font-size: 11px;
+  letter-spacing: .06em; color: var(--c-muted);
+  transition: all .15s; cursor: pointer;
+  border-left: 1.5px solid transparent;
+
+  &:hover { color: var(--c-text); background: var(--c-raised); }
+
+  &.active {
+    color: var(--c-accent);
+    background: var(--c-accent-bg);
+    border-left-color: var(--c-accent);
+  }
+}
+
+.nav-ic {
+  font-size: 9px; color: var(--c-dim);
+  width: 12px; text-align: center; transition: color .15s;
+
+  .nav-link:hover &,
+  .nav-link.active & { color: var(--c-accent); }
+}
+
+.cat-item {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 5px 8px; border-radius: var(--radius);
+  font-size: 12px; color: var(--c-muted);
+  cursor: pointer; transition: all .15s;
+
+  &:hover { color: var(--c-text); background: var(--c-raised); }
+}
+
+.cat-count { font-family: var(--f-mono); font-size: 9px; color: var(--c-dim); }
+
+.tag-wrap { display: flex; flex-wrap: wrap; gap: 5px; }
+
+.sb-tag {
+  font-family: var(--f-mono); font-size: 9px; letter-spacing: .04em;
+  padding: 3px 7px; border: 1px solid var(--c-border-hi);
+  border-radius: 2px; color: var(--c-muted); cursor: pointer;
+  transition: all .15s;
+
+  &:hover, &.on {
+    border-color: var(--c-accent);
+    color: var(--c-accent);
+    background: var(--c-accent-bg);
+  }
+}
+
+.sb-footer {
+  margin-top: auto; padding: 16px 16px 0;
+  border-top: 1px solid var(--c-border);
+}
+
+.sb-sys {
+  font-family: var(--f-mono); font-size: 9px;
+  line-height: 2; color: var(--c-dim);
+}
+.sb-sys-val { color: var(--c-accent); }

@@ -1,0 +1,20 @@
+{% comment %}
+  사용법: {% include post-card.html post=post %}
+{% endcomment %}
+<a class="post-card" href="{{ include.post.url | relative_url }}">
+  <div class="pc-meta">
+    <span class="pc-date">{{ include.post.date | date: "%Y.%m.%d" }}</span>
+    {% if include.post.new %}<span class="pc-badge b-new">NEW</span>{% endif %}
+    {% if include.post.series %}<span class="pc-badge b-series">SERIES {{ include.post.series }}</span>{% endif %}
+    {% if include.post.read_time %}<span class="pc-time">{{ include.post.read_time }} min</span>{% endif %}
+  </div>
+  <div class="pc-title">{{ include.post.title }}</div>
+  {% if include.post.excerpt %}
+  <div class="pc-excerpt">{{ include.post.excerpt | strip_html | truncate: 120 }}</div>
+  {% endif %}
+  <div class="pc-tags">
+    {% for tag in include.post.tags limit: 4 %}
+    <span class="pc-tag">#{{ tag }}</span>
+    {% endfor %}
+  </div>
+</a>

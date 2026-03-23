@@ -1,0 +1,60 @@
+// ── PROJECTS PAGE ──────────────────────────────────
+.proj-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.proj-card {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: 4px; padding: 20px;
+  cursor: pointer; position: relative; overflow: hidden;
+  transition: all .2s;
+  display: flex; flex-direction: column; gap: 10px;
+
+  &::after {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 2px; background: transparent; transition: background .2s;
+  }
+  &:hover {
+    background: var(--c-raised); border-color: var(--c-border-hi);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(0,0,0,.15);
+
+    &::after { background: var(--c-accent); }
+    .proj-name { color: var(--c-accent); }
+  }
+}
+
+.proj-top {
+  display: flex; align-items: center; justify-content: space-between;
+}
+
+.proj-name {
+  font-family: var(--f-mono); font-size: 13px; font-weight: 500;
+  color: var(--c-text); letter-spacing: .04em; transition: color .18s;
+}
+
+.proj-status {
+  font-family: var(--f-mono); font-size: 8px;
+  letter-spacing: .1em; padding: 2px 7px; border-radius: 2px;
+}
+.s-active { border: 1px solid var(--c-accent-dk); color: var(--c-accent); background: var(--c-accent-bg); }
+.s-done   { border: 1px solid var(--c-border-hi); color: var(--c-muted); }
+.s-wip    { border: 1px solid #7a6000; color: #a07800; background: rgba(160,120,0,.06); }
+
+.proj-desc { font-size: 12px; color: var(--c-muted); line-height: 1.6; flex: 1; }
+
+.proj-stack { display: flex; flex-wrap: wrap; gap: 5px; }
+.proj-tag {
+  font-family: var(--f-mono); font-size: 9px; color: var(--c-dim);
+  border: 1px solid var(--c-border); border-radius: 2px; padding: 1px 6px;
+}
+
+.proj-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 10px; border-top: 1px solid var(--c-border);
+}
+.proj-meta { font-family: var(--f-mono); font-size: 9px; color: var(--c-dim); }
+.proj-link { font-family: var(--f-mono); font-size: 9px; color: var(--c-accent); letter-spacing: .06em; }

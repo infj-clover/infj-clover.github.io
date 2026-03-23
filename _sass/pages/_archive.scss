@@ -1,0 +1,54 @@
+// ── ARCHIVE PAGE ───────────────────────────────────
+.archive-year { margin-bottom: 28px; }
+
+.archive-year-label {
+  font-family: var(--f-mono); font-size: 22px; font-weight: 500;
+  color: var(--c-dim); letter-spacing: .1em;
+  margin-bottom: 16px;
+  display: flex; align-items: center; gap: 12px;
+
+  &::after {
+    content: ''; flex: 1; height: 1px; background: var(--c-border);
+  }
+}
+
+.archive-month { margin-bottom: 20px; }
+
+.archive-month-label {
+  font-family: var(--f-mono); font-size: 10px;
+  letter-spacing: .12em; color: var(--c-accent);
+  margin-bottom: 8px;
+  display: flex; align-items: center; gap: 8px;
+
+  &::before {
+    content: ''; display: inline-block;
+    width: 10px; height: 1px; background: var(--c-accent);
+  }
+}
+
+.archive-entry {
+  display: flex; align-items: baseline; gap: 14px;
+  padding: 6px 8px; border-radius: 3px; cursor: pointer;
+  transition: background .15s, color .15s;
+  border-left: 1.5px solid transparent;
+
+  &:hover {
+    background: var(--c-surface);
+    border-left-color: var(--c-accent);
+
+    .ae-title { color: var(--c-text); }
+  }
+}
+
+.ae-date {
+  font-family: var(--f-mono); font-size: 9px;
+  color: var(--c-dim); letter-spacing: .04em; white-space: nowrap;
+}
+
+.ae-title { font-size: 13px; color: var(--c-muted); transition: color .15s; flex: 1; }
+
+.ae-tags  { display: flex; gap: 5px; }
+.ae-tag   {
+  font-family: var(--f-mono); font-size: 8px; color: var(--c-dim);
+  border: 1px solid var(--c-border); border-radius: 2px; padding: 0 5px;
+}

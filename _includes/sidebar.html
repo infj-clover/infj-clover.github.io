@@ -1,0 +1,49 @@
+<aside>
+  <div class="sb-section">
+    <div class="sb-label">NAVIGATE</div>
+    <a class="nav-link {% if page.url == '/' or page.layout == 'post' %}active{% endif %}"
+       href="{{ '/' | relative_url }}">
+      <span class="nav-ic">▸</span> POSTS
+    </a>
+    <a class="nav-link {% if page.url contains '/projects' %}active{% endif %}"
+       href="{{ '/projects/' | relative_url }}">
+      <span class="nav-ic">◈</span> PROJECTS
+    </a>
+    <a class="nav-link {% if page.url contains '/about' %}active{% endif %}"
+       href="{{ '/about/' | relative_url }}">
+      <span class="nav-ic">◎</span> ABOUT
+    </a>
+    <a class="nav-link {% if page.url contains '/archive' %}active{% endif %}"
+       href="{{ '/archive/' | relative_url }}">
+      <span class="nav-ic">≡</span> ARCHIVE
+    </a>
+  </div>
+
+  <div class="sb-section">
+    <div class="sb-label">CATEGORIES</div>
+    {% for cat in site.categories_nav %}
+    <a class="cat-item" href="{{ '/posts/#' | append: cat.slug | relative_url }}">
+      <span>{{ cat.name }}</span>
+      <span class="cat-count">{{ cat.count }}</span>
+    </a>
+    {% endfor %}
+  </div>
+
+  <div class="sb-section">
+    <div class="sb-label">TAGS</div>
+    <div class="tag-wrap">
+      {% assign all_tags = site.posts | map: 'tags' | flatten | uniq | sort %}
+      {% for tag in all_tags limit: 10 %}
+      <a class="sb-tag" href="{{ '/archive/#' | append: tag | relative_url }}">#{{ tag }}</a>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="sb-footer">
+    <div class="sb-sys">
+      <div>USER &nbsp;<span class="sb-sys-val">{{ site.author.name }}</span></div>
+      <div>POSTS <span class="sb-sys-val">{{ site.posts | size }}</span></div>
+      <div>BUILD <span class="sb-sys-val" id="bdate">--</span></div>
+    </div>
+  </div>
+</aside>
