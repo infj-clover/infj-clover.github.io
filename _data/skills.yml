@@ -1,18 +1,18 @@
 # _data/skills.yml
 - category: LANGUAGES
-  items: [Rust, Go, C, Python, TypeScript]
+  items: [Python, SQL]
 
-- category: SYSTEMS
-  items: [Linux kernel, eBPF, WASM, POSIX]
+- category: DATA PIPELINE
+  items: [Apache Spark, Apache Airflow, Kafka]
 
-- category: INFRA
-  items: [Kubernetes, Docker, Terraform, Grafana]
+- category: CLOUD (AWS)
+  items: [S3, RDS, Glue, Redshift, Athena]
 
-- category: STORAGE
-  items: [PostgreSQL, Redis, RocksDB, S3]
+- category: STORAGE & WAREHOUSE
+  items: [MySQL, DynamoDB, Redis]
 
-- category: AI / ML
-  items: [llama.cpp, GGUF, HuggingFace, CUDA]
+- category: INFRA & DEVOPS
+  items: [Docker, Git, GitHub Actions]
 
-- category: SECURITY
-  items: [Threat modeling, Binary analysis]
+- category: DATA ANALYSIS
+  items: [Pandas, Grafana]

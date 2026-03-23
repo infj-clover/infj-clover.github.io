@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Claude Code로 GitHub.io 블로그 제작"
-date: 2025-03-23
+date: 2026-03-23
 tags: [jekyll, github-pages, blog, claude]
 categories: [web]
 read_time: 10
