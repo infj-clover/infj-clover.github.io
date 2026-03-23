@@ -1,16 +1,16 @@
-title: "VOID.LOG"
+title: "dev.clover"
 description: "dev transmissions"
 baseurl: ""
 url: "https://infj-clover.github.io"
 
 # 사용자 정보 — 본인 것으로 교체하세요
 author:
-  name: "dev@void"
-  role: "SYSTEMS ENGINEER · OPEN SOURCE"
-  bio: "시스템 프로그래밍과 분산 인프라에 관심이 많은 개발자. Rust·Go·C로 저수준 문제를 다루고, 가끔 웹과 ML 사이를 넘나듭니다."
-  github: "github.com/voiddev"
-  twitter: "@voiddev"
-  email: "dev@void.log"
+  name: "infj-clover"
+  role: "Data Engineer · Data Analyst Engineer"
+  bio: "도메인 지식과 데이터가 결합될 때, 비즈니스의 방향성과 성과가 좌우된다고 생각합니다."
+  github: "github.com/infj-clover"
+  linkedin: "-"
+  email: "infj-clover@gmail.com"
   location: "Seoul, KR"
 
 # 빌드 설정
@@ -24,20 +24,20 @@ plugins:
 
 # 카테고리 (사이드바에 표시됨)
 categories_nav:
-  - name: "Rust / Systems"
-    slug: rust
+  - name: "TIL"
+    slug: til
     count: 14
-  - name: "Web / Frontend"
-    slug: web
+  - name: "Data Engineering"
+    slug: data-engineering
     count: 11
-  - name: "AI / ML"
-    slug: ai
+  - name: "Cloud"
+    slug: cloud
     count: 9
   - name: "DevOps / Infra"
     slug: devops
     count: 8
-  - name: "Security"
-    slug: security
+  - name: "ETC"
+    slug: etc
     count: 6
 
 exclude:
