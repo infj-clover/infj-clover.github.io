@@ -3,7 +3,7 @@ layout: post
 title: "Rust로 제로 코스트 추상화 구현하기 — 실전 트레이트 패턴"
 date: 2025-03-20
 tags: [rust, systems, performance]
-categories: [rust]
+categories: [til]
 read_time: 12
 pinned: true
 new: true
