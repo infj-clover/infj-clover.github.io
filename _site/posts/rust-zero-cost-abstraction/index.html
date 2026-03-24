@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rust로 제로 코스트 추상화 구현하기 — 실전 트레이트 패턴 — dev.clover</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,300&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Rust로 제로 코스트 추상화 구현하기 — 실전 트레이트 패턴 | dev.clover</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Rust로 제로 코스트 추상화 구현하기 — 실전 트레이트 패턴" />
+<meta name="author" content="infj-clover" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="컴파일 타임 다형성과 제네릭 경계를 활용해 런타임 오버헤드 없이 유연한 추상화 레이어를 설계하는 방법." />
+<meta property="og:description" content="컴파일 타임 다형성과 제네릭 경계를 활용해 런타임 오버헤드 없이 유연한 추상화 레이어를 설계하는 방법." />
+<link rel="canonical" href="https://infj-clover.github.io/posts/rust-zero-cost-abstraction/" />
+<meta property="og:url" content="https://infj-clover.github.io/posts/rust-zero-cost-abstraction/" />
+<meta property="og:site_name" content="dev.clover" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-03-20T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Rust로 제로 코스트 추상화 구현하기 — 실전 트레이트 패턴" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"infj-clover"},"dateModified":"2025-03-20T00:00:00+09:00","datePublished":"2025-03-20T00:00:00+09:00","description":"컴파일 타임 다형성과 제네릭 경계를 활용해 런타임 오버헤드 없이 유연한 추상화 레이어를 설계하는 방법.","headline":"Rust로 제로 코스트 추상화 구현하기 — 실전 트레이트 패턴","mainEntityOfPage":{"@type":"WebPage","@id":"https://infj-clover.github.io/posts/rust-zero-cost-abstraction/"},"url":"https://infj-clover.github.io/posts/rust-zero-cost-abstraction/"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+<body>
+
+  <!-- 배경 레이어들 -->
+  <div id="space-bg"></div>
+  <div id="nebula"></div>
+  <div id="light-bg"></div>
+  <canvas id="meteors"></canvas>
+  <div id="scanlines"></div>
+  <div id="boot-flash"></div>
+
+  <div class="layout">
+    <header>
+  <a class="logo" href="/">
+    <span class="logo-mark">🍀</span>
+    INFJ<span class="logo-sep">-</span>CLOVER
+    <span class="logo-sub">— dev transmissions</span>
+  </a>
+  <div class="hd-right">
+    <div class="hd-meta">
+      <span class="hd-online">SYS_ONLINE</span>
+      <span id="clk">--:--:--</span>
+    </div>
+    <button class="theme-btn" id="tbtn" onclick="toggleTheme()">DARK</button>
+  </div>
+</header>
+
+    <aside>
+  <div class="sb-section">
+    <div class="sb-label">NAVIGATE</div>
+    <a class="nav-link active"
+       href="/">
+      <span class="nav-ic">▸</span> POSTS
+    </a>
+    <a class="nav-link "
+       href="/projects/">
+      <span class="nav-ic">◈</span> PROJECTS
+    </a>
+    <a class="nav-link "
+       href="/about/">
+      <span class="nav-ic">◎</span> ABOUT
+    </a>
+    <a class="nav-link "
+       href="/archive/">
+      <span class="nav-ic">≡</span> ARCHIVE
+    </a>
+  </div>
+
+  <div class="sb-section">
+    <div class="sb-label">CATEGORIES</div>
+    
+    <a class="cat-item" href="/posts/#til">
+      <span>TIL</span>
+      <span class="cat-count">14</span>
+    </a>
+    
+    <a class="cat-item" href="/posts/#data-engineering">
+      <span>Data Engineering</span>
+      <span class="cat-count">11</span>
+    </a>
+    
+    <a class="cat-item" href="/posts/#cloud">
+      <span>Cloud</span>
+      <span class="cat-count">9</span>
+    </a>
+    
+    <a class="cat-item" href="/posts/#devops">
+      <span>DevOps / Infra</span>
+      <span class="cat-count">8</span>
+    </a>
+    
+    <a class="cat-item" href="/posts/#etc">
+      <span>ETC</span>
+      <span class="cat-count">6</span>
+    </a>
+    
+  </div>
+
+  <div class="sb-section">
+    <div class="sb-label">TAGS</div>
+    <div class="tag-wrap">
+      
+      
+      <a class="sb-tag" href="/archive/#blog">#blog</a>
+      
+      <a class="sb-tag" href="/archive/#claude">#claude</a>
+      
+      <a class="sb-tag" href="/archive/#github-pages">#github-pages</a>
+      
+      <a class="sb-tag" href="/archive/#jekyll">#jekyll</a>
+      
+      <a class="sb-tag" href="/archive/#performance">#performance</a>
+      
+      <a class="sb-tag" href="/archive/#rust">#rust</a>
+      
+      <a class="sb-tag" href="/archive/#systems">#systems</a>
+      
+    </div>
+  </div>
+
+  <div class="sb-footer">
+    <div class="sb-sys">
+      <div>USER &nbsp;<span class="sb-sys-val">infj-clover</span></div>
+      <div>POSTS <span class="sb-sys-val">2</span></div>
+      <div>BUILD <span class="sb-sys-val" id="bdate">--</span></div>
+    </div>
+  </div>
+</aside>
+
+
+    <main>
+      <div class="ph">
+  <div class="ph-path">
+    <span class="ph-path-accent">~/void/posts</span> $
+  </div>
+  <div class="ph-title">Rust로 제로 코스트 추상화 구현하기 — 실전 트레이트 패턴</div>
+  <div class="ph-sub">
+    2025.03.20
+    &nbsp;·&nbsp; 12 min read
+    
+      &nbsp;·&nbsp;
+      
+        <span class="pc-tag">til</span>
+      
+    
+  </div>
+</div>
+
+<article class="post-body">
+  <h2 id="개요">개요</h2>
+
+<p>Rust의 가장 강력한 특징 중 하나는 <strong>제로 코스트 추상화(zero-cost abstraction)</strong>입니다.
+추상화를 사용해도 런타임 비용이 없다는 의미인데, 이게 실제로 어떻게 동작하는지 살펴봅니다.</p>
+
+<h2 id="트레이트-기반-정적-디스패치">트레이트 기반 정적 디스패치</h2>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Zero-cost abstraction via static dispatch</span>
+<span class="k">trait</span> <span class="n">Processor</span> <span class="p">{</span>
+    <span class="k">fn</span> <span class="nf">process</span><span class="p">(</span><span class="o">&amp;</span><span class="k">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="o">&amp;</span><span class="p">[</span><span class="nb">u8</span><span class="p">])</span> <span class="k">-&gt;</span> <span class="nb">Vec</span><span class="o">&lt;</span><span class="nb">u8</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">fn</span> <span class="n">run</span><span class="o">&lt;</span><span class="n">T</span><span class="p">:</span> <span class="n">Processor</span><span class="o">&gt;</span><span class="p">(</span><span class="n">p</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">T</span><span class="p">,</span> <span class="n">payload</span><span class="p">:</span> <span class="o">&amp;</span><span class="p">[</span><span class="nb">u8</span><span class="p">])</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">result</span> <span class="o">=</span> <span class="n">p</span><span class="nf">.process</span><span class="p">(</span><span class="n">payload</span><span class="p">);</span>
+    <span class="nd">println!</span><span class="p">(</span><span class="s">"output: {:?}"</span><span class="p">,</span> <span class="n">result</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">T: Processor</code>처럼 제네릭 경계를 사용하면 컴파일러가 각 타입에 맞춰
+함수를 <strong>단형화(monomorphization)</strong>합니다. 가상 테이블(vtable) 없이
+직접 호출로 컴파일되므로 오버헤드가 0입니다.</p>
+
+<h2 id="동적-디스패치와의-비교">동적 디스패치와의 비교</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>방식</th>
+      <th>런타임 비용</th>
+      <th>유연성</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">T: Processor</code> (정적)</td>
+      <td>없음</td>
+      <td>컴파일 타임 고정</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">dyn Processor</code> (동적)</td>
+      <td>vtable 조회</td>
+      <td>런타임 다형성</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>실제 측정 결과 정적 디스패치는 <code class="language-plaintext highlighter-rouge">dyn Trait</code> 대비 약 <strong>15~30% 빠른</strong> 결과를 보입니다.</p>
+
+<h2 id="결론">결론</h2>
+
+<p>추상화 레이어가 필요하다면 가능한 한 제네릭을 활용하고,
+런타임 다형성이 꼭 필요한 경우에만 <code class="language-plaintext highlighter-rouge">dyn Trait</code>을 사용하세요.</p>
+
+</article>
+
+<!-- 이전/다음 글 네비게이션 -->
+<div class="pager">
+  <div>
+    
+      <button class="pg-btn" disabled style="opacity:.3">← PREV</button>
+    
+  </div>
+  <a class="pg-info" href="/posts/">ALL POSTS</a>
+  <div>
+    
+      <a class="pg-btn" href="/posts/claude-code-init/">Claude Code로 GitHub.io 블로... →</a>
+    
+  </div>
+</div>
+
+    </main>
+  </div>
+
+  <script src="/assets/js/theme.js"></script>
+  <script src="/assets/js/nebula.js"></script>
+  <script src="/assets/js/clock.js"></script>
+</body>
+</html>

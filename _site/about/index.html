@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — dev.clover</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,300&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>About | dev.clover</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="About" />
+<meta name="author" content="infj-clover" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="dev transmissions" />
+<meta property="og:description" content="dev transmissions" />
+<link rel="canonical" href="https://infj-clover.github.io/about/" />
+<meta property="og:url" content="https://infj-clover.github.io/about/" />
+<meta property="og:site_name" content="dev.clover" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="About" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","author":{"@type":"Person","name":"infj-clover"},"description":"dev transmissions","headline":"About","name":"dev.clover","url":"https://infj-clover.github.io/about/"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+<body>
+
+  <!-- 배경 레이어들 -->
+  <div id="space-bg"></div>
+  <div id="nebula"></div>
+  <div id="light-bg"></div>
+  <canvas id="meteors"></canvas>
+  <div id="scanlines"></div>
+  <div id="boot-flash"></div>
+
+  <div class="layout">
+    <header>
+  <a class="logo" href="/">
+    <span class="logo-mark">🍀</span>
+    INFJ<span class="logo-sep">-</span>CLOVER
+    <span class="logo-sub">— dev transmissions</span>
+  </a>
+  <div class="hd-right">
+    <div class="hd-meta">
+      <span class="hd-online">SYS_ONLINE</span>
+      <span id="clk">--:--:--</span>
+    </div>
+    <button class="theme-btn" id="tbtn" onclick="toggleTheme()">DARK</button>
+  </div>
+</header>
+
+    <aside>
+  <div class="sb-section">
+    <div class="sb-label">NAVIGATE</div>
+    <a class="nav-link "
+       href="/">
+      <span class="nav-ic">▸</span> POSTS
+    </a>
+    <a class="nav-link "
+       href="/projects/">
+      <span class="nav-ic">◈</span> PROJECTS
+    </a>
+    <a class="nav-link active"
+       href="/about/">
+      <span class="nav-ic">◎</span> ABOUT
+    </a>
+    <a class="nav-link "
+       href="/archive/">
+      <span class="nav-ic">≡</span> ARCHIVE
+    </a>
+  </div>
+
+  <div class="sb-section">
+    <div class="sb-label">CATEGORIES</div>
+    
+    <a class="cat-item" href="/posts/#til">
+      <span>TIL</span>
+      <span class="cat-count">14</span>
+    </a>
+    
+    <a class="cat-item" href="/posts/#data-engineering">
+      <span>Data Engineering</span>
+      <span class="cat-count">11</span>
+    </a>
+    
+    <a class="cat-item" href="/posts/#cloud">
+      <span>Cloud</span>
+      <span class="cat-count">9</span>
+    </a>
+    
+    <a class="cat-item" href="/posts/#devops">
+      <span>DevOps / Infra</span>
+      <span class="cat-count">8</span>
+    </a>
+    
+    <a class="cat-item" href="/posts/#etc">
+      <span>ETC</span>
+      <span class="cat-count">6</span>
+    </a>
+    
+  </div>
+
+  <div class="sb-section">
+    <div class="sb-label">TAGS</div>
+    <div class="tag-wrap">
+      
+      
+      <a class="sb-tag" href="/archive/#blog">#blog</a>
+      
+      <a class="sb-tag" href="/archive/#claude">#claude</a>
+      
+      <a class="sb-tag" href="/archive/#github-pages">#github-pages</a>
+      
+      <a class="sb-tag" href="/archive/#jekyll">#jekyll</a>
+      
+      <a class="sb-tag" href="/archive/#performance">#performance</a>
+      
+      <a class="sb-tag" href="/archive/#rust">#rust</a>
+      
+      <a class="sb-tag" href="/archive/#systems">#systems</a>
+      
+    </div>
+  </div>
+
+  <div class="sb-footer">
+    <div class="sb-sys">
+      <div>USER &nbsp;<span class="sb-sys-val">infj-clover</span></div>
+      <div>POSTS <span class="sb-sys-val">2</span></div>
+      <div>BUILD <span class="sb-sys-val" id="bdate">--</span></div>
+    </div>
+  </div>
+</aside>
+
+
+    <main>
+      <div class="ph">
+  <div class="ph-path"><span class="ph-path-accent">~/void/about</span> $</div>
+  <div class="ph-title">ABOUT</div>
+</div>
+
+<div class="about-hero">
+  <div class="about-avatar">∅</div>
+  <div class="about-name">infj-clover</div>
+  <div class="about-role">Data Engineer · Data Analyst Engineer</div>
+  <div class="about-bio">도메인 지식과 데이터가 결합될 때, 비즈니스의 방향성과 성과가 좌우된다고 생각합니다.</div>
+</div>
+
+<div class="about-surface">
+  <div class="about-section-title">TECH STACK</div>
+  <div class="skill-grid">
+    
+    <div class="skill-item">
+      <div class="skill-cat">LANGUAGES</div>
+      <div class="skill-list">Python · SQL</div>
+    </div>
+    
+    <div class="skill-item">
+      <div class="skill-cat">DATA PIPELINE</div>
+      <div class="skill-list">Apache Spark · Apache Airflow · Kafka</div>
+    </div>
+    
+    <div class="skill-item">
+      <div class="skill-cat">CLOUD (AWS)</div>
+      <div class="skill-list">S3 · RDS · Glue · Redshift · Athena</div>
+    </div>
+    
+    <div class="skill-item">
+      <div class="skill-cat">STORAGE & WAREHOUSE</div>
+      <div class="skill-list">MySQL · DynamoDB · Redis</div>
+    </div>
+    
+    <div class="skill-item">
+      <div class="skill-cat">INFRA & DEVOPS</div>
+      <div class="skill-list">Docker · Git · GitHub Actions</div>
+    </div>
+    
+    <div class="skill-item">
+      <div class="skill-cat">DATA ANALYSIS</div>
+      <div class="skill-list">Pandas · Grafana</div>
+    </div>
+    
+  </div>
+</div>
+
+<div class="about-surface">
+  <div class="about-section-title">CONTACT</div>
+  <div class="contact-list">
+    <div class="contact-item">
+      <span class="contact-key">EMAIL</span>
+      <a class="contact-val" href="mailto:infj-clover@gmail.com">infj-clover@gmail.com</a>
+    </div>
+    <div class="contact-item">
+      <span class="contact-key">GITHUB</span>
+      <a class="contact-val" href="https://github.com/infj-clover" target="_blank">github.com/infj-clover</a>
+    </div>
+    <div class="contact-item">
+      <span class="contact-key">TWITTER</span>
+      <span class="contact-val"></span>
+    </div>
+    <div class="contact-item">
+      <span class="contact-key">LOCATION</span>
+      <span class="contact-val">Seoul, KR</span>
+    </div>
+  </div>
+</div>
+
+    </main>
+  </div>
+
+  <script src="/assets/js/theme.js"></script>
+  <script src="/assets/js/nebula.js"></script>
+  <script src="/assets/js/clock.js"></script>
+</body>
+</html>

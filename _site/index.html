@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Posts — dev.clover</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,300&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Posts | dev.clover</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Posts" />
+<meta name="author" content="infj-clover" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="dev transmissions" />
+<meta property="og:description" content="dev transmissions" />
+<link rel="canonical" href="https://infj-clover.github.io/" />
+<meta property="og:url" content="https://infj-clover.github.io/" />
+<meta property="og:site_name" content="dev.clover" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Posts" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","author":{"@type":"Person","name":"infj-clover"},"description":"dev transmissions","headline":"Posts","name":"dev.clover","url":"https://infj-clover.github.io/"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+<body>
+
+  <!-- 배경 레이어들 -->
+  <div id="space-bg"></div>
+  <div id="nebula"></div>
+  <div id="light-bg"></div>
+  <canvas id="meteors"></canvas>
+  <div id="scanlines"></div>
+  <div id="boot-flash"></div>
+
+  <div class="layout">
+    <header>
+  <a class="logo" href="/">
+    <span class="logo-mark">🍀</span>
+    INFJ<span class="logo-sep">-</span>CLOVER
+    <span class="logo-sub">— dev transmissions</span>
+  </a>
+  <div class="hd-right">
+    <div class="hd-meta">
+      <span class="hd-online">SYS_ONLINE</span>
+      <span id="clk">--:--:--</span>
+    </div>
+    <button class="theme-btn" id="tbtn" onclick="toggleTheme()">DARK</button>
+  </div>
+</header>
+
+    <aside>
+  <div class="sb-section">
+    <div class="sb-label">NAVIGATE</div>
+    <a class="nav-link active"
+       href="/">
+      <span class="nav-ic">▸</span> POSTS
+    </a>
+    <a class="nav-link "
+       href="/projects/">
+      <span class="nav-ic">◈</span> PROJECTS
+    </a>
+    <a class="nav-link "
+       href="/about/">
+      <span class="nav-ic">◎</span> ABOUT
+    </a>
+    <a class="nav-link "
+       href="/archive/">
+      <span class="nav-ic">≡</span> ARCHIVE
+    </a>
+  </div>
+
+  <div class="sb-section">
+    <div class="sb-label">CATEGORIES</div>
+    
+    <a class="cat-item" href="/posts/#til">
+      <span>TIL</span>
+      <span class="cat-count">14</span>
+    </a>
+    
+    <a class="cat-item" href="/posts/#data-engineering">
+      <span>Data Engineering</span>
+      <span class="cat-count">11</span>
+    </a>
+    
+    <a class="cat-item" href="/posts/#cloud">
+      <span>Cloud</span>
+      <span class="cat-count">9</span>
+    </a>
+    
+    <a class="cat-item" href="/posts/#devops">
+      <span>DevOps / Infra</span>
+      <span class="cat-count">8</span>
+    </a>
+    
+    <a class="cat-item" href="/posts/#etc">
+      <span>ETC</span>
+      <span class="cat-count">6</span>
+    </a>
+    
+  </div>
+
+  <div class="sb-section">
+    <div class="sb-label">TAGS</div>
+    <div class="tag-wrap">
+      
+      
+      <a class="sb-tag" href="/archive/#blog">#blog</a>
+      
+      <a class="sb-tag" href="/archive/#claude">#claude</a>
+      
+      <a class="sb-tag" href="/archive/#github-pages">#github-pages</a>
+      
+      <a class="sb-tag" href="/archive/#jekyll">#jekyll</a>
+      
+      <a class="sb-tag" href="/archive/#performance">#performance</a>
+      
+      <a class="sb-tag" href="/archive/#rust">#rust</a>
+      
+      <a class="sb-tag" href="/archive/#systems">#systems</a>
+      
+    </div>
+  </div>
+
+  <div class="sb-footer">
+    <div class="sb-sys">
+      <div>USER &nbsp;<span class="sb-sys-val">infj-clover</span></div>
+      <div>POSTS <span class="sb-sys-val">2</span></div>
+      <div>BUILD <span class="sb-sys-val" id="bdate">--</span></div>
+    </div>
+  </div>
+</aside>
+
+
+    <main>
+      <div class="ph">
+  <div class="ph-path"><span class="ph-path-accent">~/void/posts</span> $</div>
+  <div class="ph-title">LATEST POSTS<span class="type-cursor"></span></div>
+  <div class="ph-sub">2 ENTRIES — DATE DESC</div>
+</div>
+
+<div class="filter">
+  <span class="filter-lbl">FILTER /</span>
+  <button class="f-btn on"  onclick="setF(this,'all')">ALL</button>
+  <button class="f-btn" onclick="setF(this,'rust')">RUST</button>
+  <button class="f-btn" onclick="setF(this,'ai')">AI/ML</button>
+  <button class="f-btn" onclick="setF(this,'web')">WEB</button>
+  <button class="f-btn" onclick="setF(this,'devops')">DEVOPS</button>
+</div>
+
+
+
+<div class="featured" onclick="location.href='/posts/claude-code-init/'">
+  <div class="ft-eyebrow">PINNED · 2026.03.23</div>
+  <div class="ft-title">Claude Code로 GitHub.io 블로그 제작</div>
+  <div class="ft-excerpt">Claude Code로 커스텀 SF 디자인 제작, GitHub Pages 배포까지 — Claude와 함께한 블로그 구축 과정 전체 기록.</div>
+  <span class="ft-cta">READ MORE →</span>
+</div>
+
+
+<div class="post-list" id="post-list">
+  
+    
+  
+    
+  
+</div>
+
+
+
+<script>
+function setF(el, cat) {
+  document.querySelectorAll('.f-btn').forEach(b => b.classList.remove('on'));
+  el.classList.add('on');
+  document.querySelectorAll('.post-card').forEach(card => {
+    if (cat === 'all') { card.style.display = ''; return; }
+    const tags = (card.dataset.tags || '').split(',');
+    card.style.display = tags.some(t => t.trim() === cat) ? '' : 'none';
+  });
+}
+// 사이드바 태그 토글
+document.querySelectorAll('.sb-tag').forEach(t => {
+  t.onclick = () => t.classList.toggle('on');
+});
+</script>
+
+    </main>
+  </div>
+
+  <script src="/assets/js/theme.js"></script>
+  <script src="/assets/js/nebula.js"></script>
+  <script src="/assets/js/clock.js"></script>
+</body>
+</html>
