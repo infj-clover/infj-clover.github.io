@@ -2,6 +2,7 @@ title: "dev.clover"
 description: "dev transmissions"
 baseurl: ""
 url: "https://infj-clover.github.io"
+timezone: "Asia/Seoul"
 
 # 사용자 정보 — 본인 것으로 교체하세요
 author:
